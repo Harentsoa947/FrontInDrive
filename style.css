@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.logo a img{
+    width: 40px;
+    height: 40px;
+}
+.first_nav{
+    background: rgb(0, 0, 0);
+}
+.nav-item a{
+    color: #fff;
+    font-weight: 100;
+}
+.nav-item a:hover{
+    color: #fff;
+}
+.inscription a{
+    background: #fff;
+    color: #000;
+    font-weight: bolder;
+    padding: auto 70px;
+    border-radius: 16px;
+}
+.imUber img{
+    width: 500px;
+    height: 500px;
+}
+.ajuste{
+    /* border: 2px solid #000; */
+    padding-left: 30px;
+}
+.choix_temps{
+    background: #8080801f;
+    border: none;
+    border-radius: 15px;
+    display: inline-block;
+    padding: 10px 40px;
+}
+.choix_temps select{
+    border: none;
+    background: transparent;
+}
+
+.de{
+    border: none;
+    border-radius: 15px;
+    display: inline-block;
+    padding: 10px;
+    background: #8080801f;
+    width: 350px;
+}
+.de input{
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+.de input:focus{
+    outline: none;
+}
+.reserver button{
+    padding: 10px 30px;
+    border: none;
+    background: #000;
+    color: #fff;
+    border-radius: 10px;
+}
+.trace{
+    width: 1.8px;
+    height: 53px;
+    background: #000;
+    position: absolute;
+    left: 7px;
+}
+#resDep{
+    background: #fff;
+    width: 50%;
+    /* display: none; */
+    box-shadow: 1px 7px 8px 4px black;
+}
+.loader1, .loader2{
+    width: 26px;
+    height: 26px;
+    border-radius: 50px;
+    border: 3px solid #ccc;
+    border-top: 3px solid #007bff;
+    position: absolute;
+    right: 15px;
+    animation: spin 0.8s linear infinite;
+}
+.loader1{ display: none;}
+.loader2{ display: none;}
+
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+#resultat, #resultat2{
+    width: 90%;
+    position: absolute; 
+    top: 40px;
+    border-radius: 5px;
+    left: 30px;
+    z-index: 100;
+    display: none;
+}
+#ul_rech{
+    height: 160px !important;
+    overflow-y: scroll;
+}

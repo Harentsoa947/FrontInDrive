@@ -27,7 +27,8 @@ async function rechercheVille(ville, id){
     
     
     const bbox = "46.6,-19.5,48.5,-17.5"
-    const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(ville)}&bbox=${bbox}&limit=10`
+    // const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(ville)}&bbox=${bbox}&limit=10`
+    const url = `villes/recherche?q=${encodeURIComponent(ville)}`
     try{
         const requete = await fetch(url)
         

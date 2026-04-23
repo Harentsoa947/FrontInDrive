@@ -1,3 +1,4 @@
+let timeout
 document.querySelector('#dep').addEventListener('input', function(e){
     demarrage(e, '#dep')
 })
@@ -7,22 +8,23 @@ document.querySelector('#dest').addEventListener('input', function(e){
 })
 
 function demarrage(e, id){
+    clearTimeout(timeout)
     const ul_existance = document.querySelector('#ul_rech')
     if(ul_existance){
         ul_existance.remove()
     }
-    if(e.target.value.length > 3){
-        console.log("Lancer le recherche");
-        rechercheVille(e.target.value, id)
-    }
+    timeout = setTimeout(() =>{
+        if(e.target.value.length > 3){
+            rechercheVille(e.target.value, id)
+        }
+    }, 300)
+    
 }
 
 async function rechercheVille(ville, id){
-    if(id === '#dep'){
-        document.querySelector('.loader1').style.display = 'block'
-    }else{
-        document.querySelector('.loader2').style.display = 'block'
-    }
+    const loader = (id === '#dep') ? '.loader1' : '.loader2'
+    document.querySelector(loader).style.display = 'block'
+    
     
     const bbox = "46.6,-19.5,48.5,-17.5"
     const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(ville)}&bbox=${bbox}&limit=10`
@@ -31,18 +33,14 @@ async function rechercheVille(ville, id){
         
         if(requete.ok){
             const data = await requete.json()
-            console.log("On a trouveé des résultat")
             data.features.slice(0, 5).forEach(feature => {
                 const nom = feature.properties.name || ""
                 const villeNom = feature.properties.city || ''
                 const nom_complet = `${nom} ${villeNom}` . trim()
                 creation_liste(nom_complet, id)
             })
-            if(id === '#dep'){
-                document.querySelector('.loader1').style.display = 'none'
-            }else{
-                document.querySelector('.loader2').style.display = 'none'
-            }
+            document.querySelector(loader).style.display = 'none'
+            
             
         }else{
             console.log("Pas de résultat");
@@ -100,5 +98,3 @@ function creation_liste(ville, id){
 
     
 }
-// slice : extraire tableau
-// Petit problème : Le API Photon doit être dans le backend pour bien fonctionner
